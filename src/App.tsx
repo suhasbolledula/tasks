@@ -1,6 +1,6 @@
 import React from "react";
-import "./App.css";
 import { Button, Col, Container, Row } from "react-bootstrap";
+import "./App.css";
 
 function App(): JSX.Element {
     return (
@@ -20,7 +20,7 @@ function App(): JSX.Element {
                 <li>Rhamondre Stevenson</li>
             </ol>
             <Button onClick={() => console.log("Hello World!")}>
-                <button>Log Hello World</button>
+                Log Hello World
             </Button>
             <Container>
                 <Row>

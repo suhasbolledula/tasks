@@ -36,13 +36,13 @@ describe("Testing the basic functions", () => {
     });
 
     test("Testing the isQuestion function", () => {
-        expect(isQuestion("Is this a question?")).toBe(true);
-        expect(isQuestion("Who are you?")).toBe(true);
-        expect(isQuestion("WHAT ARE YOU !?")).toBe(true);
-        expect(isQuestion("WHAT IS THIS?!")).toBe(false);
-        expect(isQuestion("OH GOD!")).toBe(false);
-        expect(isQuestion("Oh nevermind, it's fine.")).toBe(false);
-        expect(isQuestion("")).toBe(false);
+        expect(isQuestion({ message: "Is this a question?" })).toBe(true);
+        expect(isQuestion({ message: "Who are you?" })).toBe(true);
+        expect(isQuestion({ message: "WHAT ARE YOU !?" })).toBe(true);
+        expect(isQuestion({ message: "WHAT IS THIS?!" })).toBe(false);
+        expect(isQuestion({ message: "OH GOD!" })).toBe(false);
+        expect(isQuestion({ message: "Oh nevermind, it's fine." })).toBe(false);
+        expect(isQuestion({ message: "" })).toBe(false);
     });
 
     test("Testing the convertYesNo function", () => {
