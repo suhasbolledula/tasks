@@ -5,7 +5,13 @@
  * the number twice.
  */
 export function bookEndList(numbers: number[]): number[] {
-    return numbers;
+    if (numbers.length === 0) {
+        return [];
+    } else if (numbers.length === 1) {
+        return [numbers[0], numbers[0]];
+    } else {
+        return [numbers[0], numbers[numbers.length - 1]];
+    }
 }
 
 /**
@@ -13,7 +19,8 @@ export function bookEndList(numbers: number[]): number[] {
  * number has been tripled (multiplied by 3).
  */
 export function tripleNumbers(numbers: number[]): number[] {
-    return numbers;
+    const tripled = numbers.map((value: number): number => value * 3);
+    return tripled;
 }
 
 /**
@@ -21,7 +28,11 @@ export function tripleNumbers(numbers: number[]): number[] {
  * the number cannot be parsed as an integer, convert it to 0 instead.
  */
 export function stringsToIntegers(numbers: string[]): number[] {
-    return [];
+    const parse = numbers.map((value: string): number => {
+        const num = parseInt(value);
+        return isNaN(num) ? 0 : num;
+    });
+    return parse;
 }
 
 /**
@@ -32,7 +43,14 @@ export function stringsToIntegers(numbers: string[]): number[] {
  */
 // Remember, you can write functions as lambdas too! They work exactly the same.
 export const removeDollars = (amounts: string[]): number[] => {
-    return [];
+    const nod = amounts.map((value: string): string => {
+        return value.includes("$") ? value.replace("$", "") : value;
+    });
+    const parse = nod.map((value: string): number => {
+        const num = parseInt(value);
+        return isNaN(num) ? 0 : num;
+    });
+    return parse;
 };
 
 /**
@@ -41,7 +59,14 @@ export const removeDollars = (amounts: string[]): number[] => {
  * in question marks ("?").
  */
 export const shoutIfExclaiming = (messages: string[]): string[] => {
-    return [];
+    const filterdS = messages.filter((value) => !value.endsWith("?"));
+    const nod = filterdS.map((value: string): string => {
+        if (value.endsWith("!")) {
+            return value.toUpperCase();
+        }
+        return value;
+    });
+    return nod;
 };
 
 /**
@@ -49,7 +74,13 @@ export const shoutIfExclaiming = (messages: string[]): string[] => {
  * 4 letters long.
  */
 export function countShortWords(words: string[]): number {
-    return 0;
+    let count = 0;
+    words.map((value: string): void => {
+        if (value.length < 4) {
+            count += 1;
+        }
+    });
+    return count;
 }
 
 /**
@@ -58,7 +89,25 @@ export function countShortWords(words: string[]): number {
  * then return true.
  */
 export function allRGB(colors: string[]): boolean {
-    return false;
+    if (colors.length == 0) {
+        return true;
+    }
+    const a = colors.map((value: string): boolean => {
+        if (value.toLowerCase() === "red") {
+            return true;
+        } else if (value.toLowerCase() === "blue") {
+            return true;
+        } else if (value.toLowerCase() === "green") {
+            return true;
+        } else {
+            return false;
+        }
+    });
+    const num = a.filter((value) => value === false).length;
+    if (num >= 1) {
+        return false;
+    }
+    return true;
 }
 
 /**
@@ -69,7 +118,14 @@ export function allRGB(colors: string[]): boolean {
  * And the array [] would become "0=0".
  */
 export function makeMath(addends: number[]): string {
-    return "";
+    if (addends.length == 0) {
+        return "0=0";
+    }
+    let count = 0;
+    addends.map((value) => (count += value));
+    let ring1 = `${count}=`;
+    addends.map((value: number): string => (ring1 += value + "+"));
+    return ring1.slice(0, -1);
 }
 
 /**
@@ -82,5 +138,20 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    return [];
+    let count = 0;
+    let foundNegative = false;
+    const a1 = [];
+    values.map((value) => {
+        if (value < 0 && !foundNegative) {
+            foundNegative = true;
+            a1.push(value, count);
+        } else {
+            count += value;
+            a1.push(value);
+        }
+    });
+    if (!foundNegative) {
+        a1.push(count);
+    }
+    return a1;
 }
