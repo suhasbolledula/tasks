@@ -6,12 +6,12 @@ interface valueProps {
     dhValue: number;
 }
 
-function Doubler({ setDhValue, dhValue }: valueProps): JSX.Element {
-    return <Button onClick={() => setDhValue(2 * dhValue)}>Double</Button>;
-}
-
 function Halver({ setDhValue, dhValue }: valueProps): JSX.Element {
     return <Button onClick={() => setDhValue(0.5 * dhValue)}>Halve</Button>;
+}
+
+function Doubler({ setDhValue, dhValue }: valueProps): JSX.Element {
+    return <Button onClick={() => setDhValue(2 * dhValue)}>Double</Button>;
 }
 
 export function DoubleHalf(): JSX.Element {
